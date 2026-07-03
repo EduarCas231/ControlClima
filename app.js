@@ -10,7 +10,7 @@ document.getElementById('search-btn').addEventListener('click', async () => {
   weatherCard.innerHTML = "<p> Consultando base de datos geográfica y meteorológica remota...</p>";
 
   try {
-    // Consumo asíncrono a la API Nominatim de OpenStreetMap
+    
     const response = await fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(city)}&limit=1`);
     const data = await response.json();
 
@@ -21,7 +21,7 @@ document.getElementById('search-btn').addEventListener('click', async () => {
 
     const lugar = data[0];
 
-    // Si el usuario busca "Lerma", forzamos los datos solicitados. Si no, generamos parámetros aleatorios.
+   
     let temp, humidity, condition;
 
     if (city.toLowerCase() === 'lerma') {
@@ -34,7 +34,7 @@ document.getElementById('search-btn').addEventListener('click', async () => {
       condition = ["Despejado", "Nublado", "Lluvia Ligera", "Tormenta Eléctrica"][Math.floor(Math.random() * 4)];
     }
 
-    // Renderizado e inyección dinámica unificada en el DOM
+    
     weatherCard.innerHTML = `
       <h3> Ubicación Localizada: ${city}</h3>
       <p class="description"><strong>Descripción oficial:</strong> ${lugar.display_name}</p>
